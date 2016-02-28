@@ -13,7 +13,7 @@
 
     <properties>
         <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>IOS-8859-1</project.reporting.outputEncoding>
+        <project.reporting.outputEncoding>ISO-8859-1</project.reporting.outputEncoding>
         <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
         <kernsoftware.version>3.6.5</kernsoftware.version>
         <distributionspaket.status>FREI</distributionspaket.status>
@@ -171,6 +171,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.10.3</version>
+                <configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
                 <executions>
                     <execution>
                         <id>api-javadoc</id>
@@ -208,13 +211,12 @@
                 <dependencies>
                     <dependency>
                         <groupId>com.github.datenverteiler</groupId>
-                        <artifactId>systemelement-assembly</artifactId>
+                        <artifactId>datenverteiler-assembly</artifactId>
                         <version>1.0.0-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
                 <configuration>
                     <finalName>SWE_${project.artifactId}_${distributionspaket.status}_V${project.version}_D${distributionspaket.standDatum}</finalName>
-                    <appendAssemblyId>false</appendAssemblyId>
 <!--
                     <descriptorRefs>
                         <descriptorRef>distributionspaket</descriptorRef>
@@ -308,6 +310,7 @@
                 <configuration>
                     <threshold>High</threshold>
                     <includeTests>true</includeTests>
+                    <failOnError>false</failOnError>
                 </configuration>
                 <executions>
                     <execution>
@@ -360,6 +363,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.10.3</version>
+                <configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
